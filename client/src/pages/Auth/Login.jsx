@@ -56,7 +56,7 @@ const Login = () => {
           <p>Email: <span className="font-medium">khushirice07@gmail.com</span></p>
           <p>Password: <span className="font-medium">Password</span></p>
           <button
-            onClick={fillDemoCredentials}
+
             type="button"
             className="mt-2 text-blue-600 hover:text-blue-800 text-sm font-medium underline"
           >
