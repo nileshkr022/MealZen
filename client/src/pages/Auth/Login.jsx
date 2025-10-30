@@ -50,20 +50,6 @@ const Login = () => {
           </p>
         </div>
 
-        {/* --- DEMO CREDENTIALS BOX --- */}
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm text-gray-700">
-          <p className="font-semibold mb-1 text-blue-800">Demo Credentials</p>
-          <p>Email: <span className="font-medium">khushirice07@gmail.com</span></p>
-          <p>Password: <span className="font-medium">Password</span></p>
-          <button
-
-            type="button"
-            className="mt-2 text-blue-600 hover:text-blue-800 text-sm font-medium underline"
-          >
-            Use Demo Credentials
-          </button>
-        </div>
-
         <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-4">
             <div>
