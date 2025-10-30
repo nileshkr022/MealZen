@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🥑 NutriChef - Your Smart Kitchen Assistant
 
-## Getting Started
+**NutriChef** is a full-stack **MERN** application designed to revolutionize your home cooking experience. Think of it as your AI-powered sous-chef — helping you manage your pantry, reduce food waste, and discover personalized meal plans.
 
-First, run the development server:
+[![Made with MERN](https://img.shields.io/badge/Made%20with-MERN-brightgreen)](https://mern.io/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+🔗 [nutrichef-six.vercel.app ](https://nutrichef-six.vercel.app/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📸 Screenshots
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<img width="1345" height="631" alt="Screenshot" src="https://github.com/user-attachments/assets/38cbe943-89eb-450b-9ce9-a6525acd8214" />
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+<img width="1341" height="628" alt="Screenshot" src="https://github.com/user-attachments/assets/9da7a129-7872-4b23-8e1c-f5902ad3a7c0" />
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✨ Core Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- ✅ **Smart Pantry Management**  
+  Track your ingredients, monitor expiry dates, and get timely alerts.
+
+- 🤖 **AI-Powered Recipe Generator**  
+  Generate delicious, unique recipes using only what's in your pantry.
+
+- 🍽️ **Personalized 7-Day Meal Plans**  
+  AI-crafted meal plans based on your preferences and dietary goals. *(Pro feature)*
+
+- 💳 **Pro Subscription System**  
+  Unlock premium features using secure **Razorpay** integration.
+
+- 🔐 **Role-Based Authentication**  
+  Secure JWT-based system for Free Users, Pro Users, and Admins.
+
+- 🛠️ **Admin Dashboard**  
+  View statistics, manage users, and moderate content in a full-featured admin panel.
+
+- 📄 **PDF Meal Plan Export**  
+  Pro users can download their weekly meal plan as a clean PDF using **PDFKit**.
+
+---
+
+## 🛠️ Tech Stack
+
+### 🖥️ Frontend
+
+- **React.js** — Modern UI library  
+- **React Router** — Seamless navigation  
+- **Tailwind CSS** — Utility-first styling  
+- **React Context API** — Global state management  
+- **Axios** — Promise-based HTTP client  
+- **Vite** — Lightning-fast build tool  
+
+### 🔧 Backend
+
+- **Node.js + Express.js** — RESTful API development  
+- **MongoDB + Mongoose** — NoSQL database and data modeling  
+- **JWT** — Secure authentication  
+- **Nodemailer** — Send emails (welcome, reset, etc.)  
+- **PDFKit** — Generate PDF documents server-side  
+- **OpenRouter API** — Access to advanced AI language models  
+- **Razorpay API** — Secure payment gateway
+
+---
+
