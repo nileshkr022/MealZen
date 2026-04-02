@@ -81,7 +81,7 @@ router.post('/ai-generate', authenticate, authorize('pro_user'), asyncHandler(as
     const finalGoal = (healthGoal && healthGoal !== 'any') ? healthGoal : (userPreferences.goals || 'general wellness');
 
     const prompt = `You are a specialist meal planning AI for a nutrition app. Your task is to generate a meal plan for a single day: ${dateString}.
-**PRIMARY DIRECTIVE:** The meal plan you generate **MUST BE STRICTLY ${finalDietary}**. Keep foods versatile and not monotonic and don't include non-veg in every meal. Food must haveb indian touch and only remember eggs, fishes or similar aquatic things, Chicken and Mutton as Non-Veg options. This is the most important rule. For example, if the diet is 'vegetarian', you **MUST NOT** include any meat, poultry, or fish.
+**PRIMARY DIRECTIVE:** The meal plan you generate **MUST BE STRICTLY ${finalDietary}**. Do not repeat any dish and keep non veg upto 50 % of total meals. Food must haveb indian touch and only remember eggs, fishes or similar aquatic things, Chicken and Mutton as Non-Veg options. This is the most important rule. For example, if the diet is 'vegetarian', you **MUST NOT** include any meat, poultry, or fish.
 **SECONDARY GOAL:** The meals should be designed to help with the following health goal: **${finalGoal}**.
 **ALLERGIES TO AVOID:** Do not include any of these ingredients: **${userPreferences.allergies.join(', ') || 'none'}**.
 Strictly respond with a single JSON object for this one day. The "ingredients" field MUST be an array of objects, each with "name", "quantity", and "unit" keys. The "nutrition" values must be numbers only (e.g., "protein": 20). DO NOT include a "recipe" field.
