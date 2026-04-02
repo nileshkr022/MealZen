@@ -84,6 +84,7 @@ CRITICAL INSTRUCTIONS:
 2. The recipe's style MUST match this health goal: **${finalGoal}**.
 3. The recipe MUST use these ingredients: **${ingredients.join(', ')}**.
 4. Allergies to AVOID: **${userPreferences.allergies.join(', ') || 'none'}**.
+5. Keep some of recipie like Indian food and avoid to give names which they don't relate to**.
 
 RESPONSE FORMATTING RULES:
 - The "category" field MUST be exactly ONE of these values: "breakfast", "lunch", "dinner", "snack", "dessert", "beverage".
