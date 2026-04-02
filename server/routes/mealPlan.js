@@ -80,13 +80,76 @@ router.post('/ai-generate', authenticate, authorize('pro_user'), asyncHandler(as
     const finalDietary = (dietary && dietary !== 'any') ? dietary : (userPreferences.dietary.join(', ') || 'a standard balanced diet');
     const finalGoal = (healthGoal && healthGoal !== 'any') ? healthGoal : (userPreferences.goals || 'general wellness');
 
-    const prompt = `You are a specialist meal planning AI for a nutrition app. Your task is to generate a meal plan for a single day: ${dateString}.
-**PRIMARY DIRECTIVE:** The meal plan you generate **MUST BE STRICTLY ${finalDietary}**. Do not repeat any dish and keep non veg upto 50 % of total meals. Food must haveb indian touch and only remember eggs, fishes or similar aquatic things, Chicken and Mutton as Non-Veg options. This is the most important rule. For example, if the diet is 'vegetarian', you **MUST NOT** include any meat, poultry, or fish.
-**SECONDARY GOAL:** The meals should be designed to help with the following health goal: **${finalGoal}**.
-**ALLERGIES TO AVOID:** Do not include any of these ingredients: **${userPreferences.allergies.join(', ') || 'none'}**.
-Strictly respond with a single JSON object for this one day. The "ingredients" field MUST be an array of objects, each with "name", "quantity", and "unit" keys. The "nutrition" values must be numbers only (e.g., "protein": 20). DO NOT include a "recipe" field.
-Example format: { "meals": [ { "name": "...", "type": "breakfast", "ingredients": [{ "name": "Egg", "quantity": "2", "unit": "pieces" }], "calories": 250, "nutrition": {"protein": 20, "carbs": 5, "fat": 15} }, ... ] }`;
+    const prompt = `You are a highly strict meal planning AI.
 
+TASK:
+Generate a meal plan for ONE DAY only: ${dateString}.
+
+CRITICAL RULES (MUST FOLLOW STRICTLY):
+
+1. DIET TYPE (HIGHEST PRIORITY):
+The meal plan MUST be 100% ${finalDietary}.
+- If vegetarian → NO meat, NO chicken, NO fish, NO eggs.
+- If non-vegetarian → Only allowed non-veg items: eggs, fish (aquatic), chicken, mutton.
+- Do NOT include any other non-veg items under any condition.
+
+2. NON-VEG LIMIT:
+If diet allows non-veg → maximum 50% of total meals can contain non-veg.
+The remaining meals MUST be vegetarian.
+
+3. NO DUPLICATION:
+Do NOT repeat any dish in the entire day.
+
+4. INDIAN STYLE:
+All meals MUST have an Indian touch (Indian cuisine or Indian-style preparation).
+
+5. HEALTH GOAL:
+Meals MUST support this goal: ${finalGoal}.
+
+6. ALLERGIES (STRICT EXCLUSION):
+Do NOT include any of these ingredients:
+${userPreferences.allergies.join(', ') || 'none'}
+
+7. OUTPUT FORMAT (MANDATORY):
+- Return ONLY a valid JSON object.
+- Do NOT include any text before or after JSON.
+- Do NOT include explanations.
+
+FORMAT:
+{
+  "meals": [
+    {
+      "name": "...",
+      "type": "breakfast | lunch | dinner | snack",
+      "ingredients": [
+        { "name": "...", "quantity": number, "unit": "..." }
+      ],
+      "calories": number,
+      "nutrition": {
+        "protein": number,
+        "carbs": number,
+        "fat": number
+      }
+    }
+  ]
+}
+
+8. INGREDIENT RULE:
+- "ingredients" MUST be an array of objects
+- Each object MUST have: name, quantity (number), unit
+
+9. NUTRITION RULE:
+- All nutrition values MUST be numbers ONLY (no strings, no units)
+
+FAIL-SAFE:
+If any rule conflicts, ALWAYS prioritize:
+Diet type > Allergies > Non-veg limit > Other rules.
+
+Generate now.`;
+
+
+
+    
     try {
       const response = await axios.post(
         'https://openrouter.ai/api/v1/chat/completions',
